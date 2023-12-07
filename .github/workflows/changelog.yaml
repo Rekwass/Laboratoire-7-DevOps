@@ -9,7 +9,7 @@ jobs:
     name: Get Added Changelog Files
     runs-on: ubuntu-latest
     outputs:
-      added_changelogs: ${{ steps.diff_changelogs.outputs.added_changelogs }}
+      added: ${{ steps.diff_changelogs.outputs.added }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -24,7 +24,6 @@ jobs:
           REGX='^(changelog)/(\w+\.json)$'
           FILTERED=$(echo $FORMATED | grep -E $REGX)
           echo "Detected added changelogs: $FILTERED"
-          echo "added=$FILTERED"
           echo "added=$FILTERED" >> $GITHUB_OUTPUT
   notify:
     needs: get_changelogs
