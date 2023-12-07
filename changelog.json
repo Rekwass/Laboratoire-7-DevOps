@@ -1,6 +1,6 @@
 {
   "title": "Titre de la notification",
-  "description": "Mise jour de la version 1.0.0 de ABC...",
+  "description": "Mise jour de la version 2.0.0 de ABC...",
   "environments": ["dev", "staging"],
   "impact": ["service1", "auth"],
   "contacts": [
