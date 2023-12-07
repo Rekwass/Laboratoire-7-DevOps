@@ -20,15 +20,15 @@ jobs:
         if: ${{ steps.files.outputs.added }}
         run: |
           ADDED=$(echo ${{ steps.files.outputs.added }})
-          FORMATED=$(echo $ADDED | tr " " "\n")
-          REGX="^(changelog)/(\w+\.json)$"
+          FORMATED=$(echo $ADDED | tr ' ' '\n')
+          REGX='^(changelog)/(\w+\.json)$'
           FILTERED=$(echo $FORMATED | grep -E $REGX)
           echo "Detected added changelogs: $FILTERED"
           echo "added=$FILTERED" >> $GITHUB_OUTPUT
   notify:
     needs: get_changelogs
     if: ${{ needs.get_changelogs.outputs.added }}
-    name: Send Changelog Notification
+    name: Send Changelog Notifications
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
