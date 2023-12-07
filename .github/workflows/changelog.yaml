@@ -51,7 +51,7 @@ jobs:
           echo "Detected changelog update: $FILTERED"
           for FILE in $FILTERED; do
             echo "Processing changelog: $FILE"
-            CHANNELS=$(jq -r ".notify[]" FILE)
+            CHANNELS=$(jq -r ".notify[]" $FILE)
             echo "Found channels: $CHANNELS"
 
             for CHANNEL in $CHANNELS; do
